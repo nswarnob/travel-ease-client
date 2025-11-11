@@ -53,7 +53,7 @@ export const router = createBrowserRouter([
         </PrivateRoute>
       },
       {
-        path: 'add-vehicle',
+        path: 'add-vehicles',
         element: <PrivateRoute>
           <AddVehiclePage></AddVehiclePage>
         </PrivateRoute>
