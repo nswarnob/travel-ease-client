@@ -1,11 +1,13 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { AuthContext } from "../Providers/AuthProvider";
+import { useParams } from "react-router";
 
-const AddVehicleForm = () => {
+const AddVehiclePage = () => {
   const { user } = useContext(AuthContext); // logged-in user info (displayName, email, etc.)
+ const {id} = useParams(); 
 
-  const [formData, setFormData] = useState({
+const [formData, setFormData] = useState({
     vehicleName: "",
     ownerName: "",
     category: "",
@@ -17,6 +19,20 @@ const AddVehicleForm = () => {
   });
 
   const [loading, setLoading] = useState(false);
+
+
+ useEffect(()=>{
+  if(id){
+    axios.get(`http://localhost:3000/all-vehicles/${id}`)
+    .then(res=> setFormData(res.data))
+    .catch(err=>console.log(err));
+  }
+ },[id])
+
+
+
+
+  
 
   // Handle field changes
   const handleChange = (e) => {
@@ -37,6 +53,14 @@ const AddVehicleForm = () => {
     };
 
     setLoading(true);
+
+     //update request
+     if(id){
+      const res = await axios.put(`http://localhost:3000/all-vehicles/${id}`, vehicleData);
+      res.send('Successfull update')
+     }
+
+    //add request
     try {
       const res = await axios.post("http://localhost:3000/all-vehicles", vehicleData);
       if (res.status === 201) {
@@ -47,7 +71,7 @@ const AddVehicleForm = () => {
           category: "",
           pricePerDay: "",
           location: "",
-          availability: "available",
+          availability: "Available",
           description: "",
           coverImage: "",
         });
@@ -144,6 +168,8 @@ const AddVehicleForm = () => {
           className="w-full border p-2 rounded"
         />
 
+        
+
         <div className="text-sm text-gray-600">
           <strong>User Email:</strong> {user?.email || "Not logged in"}
         </div>
@@ -160,4 +186,4 @@ const AddVehicleForm = () => {
   );
 };
 
-export default AddVehicleForm;
+export default AddVehiclePage;

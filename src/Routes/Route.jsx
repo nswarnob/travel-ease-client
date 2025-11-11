@@ -47,6 +47,10 @@ export const router = createBrowserRouter([
         </PrivateRoute>
       },
       {
+        path:'update-vehicle/:id',
+        element:<AddVehiclePage></AddVehiclePage>
+      },
+      {
         path: 'my-bookings',
         element: <PrivateRoute>
           <MyBookingPage></MyBookingPage>
@@ -58,6 +62,7 @@ export const router = createBrowserRouter([
           <AddVehiclePage></AddVehiclePage>
         </PrivateRoute>
       },
+      
       {
         path: 'car-details/:id',
         loader: () => fetch(`http://localhost:3000/all-vehicles`),

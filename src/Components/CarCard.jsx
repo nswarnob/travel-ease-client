@@ -2,7 +2,10 @@ import React from 'react';
 import { Link } from 'react-router';
 
 
-const CarCard = ({ car }) => {
+
+const CarCard = ({ car,  showUpdateButton }) => {
+
+  
   console.log(car)
   return (
     <div className="card bg-base-100 shadow-sm">
@@ -16,7 +19,7 @@ const CarCard = ({ car }) => {
           <p className=' text-center bg-warning rounded-full' > {car?.availability} </p>
         </div>
 
-        <Link to={`/car-details/${car._id}`} className="btn btn-primary rounded-full">View Details</Link>
+        <Link to={showUpdateButton? `/update-vehicle/${car._id}`:`/car-details/${car._id}`} className="btn btn-primary rounded-full"> {showUpdateButton?"Update Details":"View Details"} </Link>
 
       </div></div>
     </div>

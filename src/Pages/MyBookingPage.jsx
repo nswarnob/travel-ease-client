@@ -35,13 +35,16 @@ const MyBookingPage = () => {
         !bookings.length ? <p>No bookings found.</p> : (<div>
           {
             loading ? <Loader></Loader> : <div className="max-w-3xl mx-auto mt-8">
-              <h2 className="text-2xl font-bold mb-4">My Bookings</h2>
+             <div className='flex justify-between items-center ' >
+               <h2 className="text-2xl font-bold mb-4">My Bookings</h2>
+              <p> <strong>Total:</strong> {bookings.length}</p>
+             </div>
               <div className="grid gap-4">
                 {bookings.map((b) => (
                   <div key={b._id} className="p-4 border rounded-lg shadow">
                     <h3 className="font-semibold text-lg">{b.car_name}</h3>
                     <p>Booking Date: {new Date(b.booking_date).toLocaleString()}</p>
-                    <p>Price: ${b.price || "N/A"}</p>
+                    <p>Price: ${b.pricePerDay || "N/A"}</p>
                   </div>
                 ))}
               </div>
