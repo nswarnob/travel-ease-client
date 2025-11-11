@@ -7,9 +7,9 @@ const allData = useLoaderData();
 
 
   return (
-  <div className='mt-10 w-[1200px] mx-auto'>
+  <div className='mt-10 w-[1000px] mx-auto'>
         <h1 className='font-bold text-3xl text-center mb-15' >All Vehicles</h1>
-        <div className='flex flex-wrap gap-3 '>
+        <div className='grid grid-cols-3 gap-5'>
           {
             allData.map(car => <CarCard key={car._id} car={car}  ></CarCard>)
           }

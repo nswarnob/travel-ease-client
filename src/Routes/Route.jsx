@@ -9,6 +9,7 @@ import MyVehiclePage from "../Pages/MyVehiclePage";
 import MyBookingPage from "../Pages/MyBookingPage";
 import AddVehiclePage from "../Pages/AddVehiclePage";
 import Loader from "../Components/Loader";
+import CarDetails from "../Pages/CarDetails";
 
 
 
@@ -29,7 +30,7 @@ export const router = createBrowserRouter([
         path: 'all-vehicles',
         Component: AllVehiclesPage,
         loader: () => fetch(`http://localhost:3000/all-vehicles`),
-       hydrateFallbackElement: <Loader></Loader>
+        hydrateFallbackElement: <Loader></Loader>
       },
       {
         path: 'login',
@@ -40,7 +41,7 @@ export const router = createBrowserRouter([
         Component: RegisterPage,
       },
       {
-        path: 'my-vehicle',
+        path: 'my-vehicles',
         element: <PrivateRoute>
           <MyVehiclePage></MyVehiclePage>
         </PrivateRoute>
@@ -56,6 +57,12 @@ export const router = createBrowserRouter([
         element: <PrivateRoute>
           <AddVehiclePage></AddVehiclePage>
         </PrivateRoute>
+      },
+      {
+        path: 'car-details/:id',
+        loader: () => fetch(`http://localhost:3000/all-vehicles`),
+        hydrateFallbackElement: <Loader></Loader>,
+        Component: CarDetails
       }
 
 

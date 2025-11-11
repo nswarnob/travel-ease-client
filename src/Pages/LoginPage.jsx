@@ -17,7 +17,7 @@ const LoginPage = () => {
     const password = e.target.password.value;
 
     signIn(email, password);
-    signInWithGoogle(email, password)
+    
   }
 
 
@@ -26,7 +26,6 @@ const LoginPage = () => {
   <div className='w-100 mx-auto my-10'>
       <StyledWrapper>
       <form onSubmit={handleClick} className="form_container">
-        <div className="logo_container" />
         <div className="title_container">
           <p className="title">Login to your Account</p>
           <span className="subtitle">Get started with our app, just create an account and enjoy the experience.</span>
@@ -58,7 +57,7 @@ const LoginPage = () => {
           <span>Or</span>
           <hr className="line" />
         </div>
-        <button title="Sign In" type="submit" className="sign-in_ggl">
+        <button onClick={signInWithGoogle} title="Sign In" type="submit" className="sign-in_ggl">
           <svg height={18} width={18} viewBox="0 0 32 32" xmlnsXlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <path d="M44.5 20H24v8.5h11.8C34.7 33.9 30.1 37 24 37c-7.2 0-13-5.8-13-13s5.8-13 13-13c3.1 0 5.9 1.1 8.1 2.9l6.4-6.4C34.6 4.1 29.6 2 24 2 11.8 2 2 11.8 2 24s9.8 22 22 22c11 0 21-8 21-22 0-1.3-.2-2.7-.5-4z" id="A" />
@@ -72,7 +71,7 @@ const LoginPage = () => {
               <path fill="#4285f4" clipPath="url(#B)" d="M48 48L17 24l-4-3 35-10z" />
             </g>
           </svg>
-          <span>Sign In with Google</span>
+          <span >Sign In with Google</span>
         </button>
         <p className="note">Terms of use &amp; Conditions</p>
       </form>
@@ -99,15 +98,6 @@ const StyledWrapper = styled.div`
     font-family: "Inter", sans-serif;
   }
 
-  .logo_container {
-    box-sizing: border-box;
-    width: 80px;
-    height: 80px;
-    background: linear-gradient(180deg, rgba(248, 248, 248, 0) 50%, #F8F8F888 100%);
-    border: 1px solid #F7F7F8;
-    filter: drop-shadow(0px 0.5px 0.5px #EFEFEF) drop-shadow(0px 1px 0.5px rgba(239, 239, 239, 0.5));
-    border-radius: 11px;
-  }
 
   .title_container {
     display: flex;
@@ -195,23 +185,6 @@ const StyledWrapper = styled.div`
     border-radius: 7px;
     outline: none;
     color: #242424;
-    border: 1px solid #e5e5e5;
-    filter: drop-shadow(0px 1px 0px #efefef)
-      drop-shadow(0px 1px 0.5px rgba(239, 239, 239, 0.5));
-    cursor: pointer;
-  }
-
-  .sign-in_apl {
-    width: 100%;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    background: #212121;
-    border-radius: 7px;
-    outline: none;
-    color: #ffffff;
     border: 1px solid #e5e5e5;
     filter: drop-shadow(0px 1px 0px #efefef)
       drop-shadow(0px 1px 0.5px rgba(239, 239, 239, 0.5));

@@ -8,14 +8,8 @@ const HomePage = () => {
   console.log(latestVehicles);
   return (
     <div>
-      <div className='flex items-center justify-between max-w-5xl mx-auto mt-20'>
-
-        <div>
-          <h1>Book your destination with us & Enjoy Ease!</h1>
-          <Link to={'/all-vehicles'} className='btn'>View All Vehicles</Link>
-        </div>
-
-        <div className='max-w-1/2 bg-primary-content p-30 rounded-3xl'>
+      <div className='grid max-w-2xl mx-auto mt-20 space-y-10'>
+        <div className='max-w-1/2 mx-auto px-20 rounded-full'>
           <StyledWrapper>
             <div className="loader">
               <div className="truckWrapper">
@@ -56,14 +50,20 @@ const HomePage = () => {
             </div>
           </StyledWrapper>
         </div>
+        <div className='text-center'>
+          <h1 className='font-bold text-3xl'>Book your destination with us & Enjoy Ease!</h1>
+          <Link to={'/all-vehicles'} className='btn bg-primary text-white rounded-3xl mt-4'>View All Vehicles</Link>
+        </div>
+
+
 
 
 
       </div>
 
-      <div className='mt-30 w-[1200px] mx-auto'>
-        <h1 className='font-bold text-3xl text-center mb-15' >Latest Vehicle</h1>
-        <div className='flex flex-wrap gap-3 '>
+      <div className=' max-w-[1000px] mx-auto my-20'>
+        <h1 className='font-bold text-2xl text-center mb-15' >Latest Vehicle</h1>
+        <div className='grid grid-cols-3 gap-4'>
           {
             latestVehicles.map(car => <CarCard key={car._id} car={car}  ></CarCard>)
           }

@@ -1,95 +1,28 @@
 import React from 'react';
-import styled from 'styled-components';
+import { Link } from 'react-router';
 
-const CarCard = ({car}) => {
+
+const CarCard = ({ car }) => {
+  console.log(car)
   return (
-    <StyledWrapper>
-      <div className="card">
-        <div className="image"> <img src={car.coverImage} alt="" />
-            <span className="text">This is a chair.</span></div>
-        <span className="title">Cool Chair</span>
-        <span className="price">$100</span>
-      </div>
-    </StyledWrapper>
+    <div className="card bg-base-100 shadow-sm">
+      <figure>
+        <img
+          src={car.coverImage}
+          alt="car" className='h-60 w-80 object-cover' />
+      </figure>
+      <div className='card-body'>   <div className="flex justify-between items-center">
+        <div className='card-content'>  <h2 className="card-title">{car.vehicleName}</h2>
+          <p className=' text-center bg-warning rounded-full' > {car?.availability} </p>
+        </div>
+
+        <Link to={`/car-details/${car._id}`} className="btn btn-primary rounded-full">View Details</Link>
+
+      </div></div>
+    </div>
   );
 }
 
-const StyledWrapper = styled.div`
-  .card {
-    position: relative;
-    width: 18em;
-    height: 15em;
-    box-shadow: 0px 1px 13px rgba(0,0,0,0.1);
-    cursor: pointer;
-    transition: all 120ms;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #fff;
-    padding: 0.5em;
-    padding-bottom: 3.4em;
-  }
 
-  .card::after {
-    content: "View Details";
-    padding-top: 1.25em;
-    padding-left: 1.25em;
-    position: absolute;
-    left: 0;
-    bottom: -60px;
-    background: #00AC7C;
-    color: #fff;
-    height: 2.5em;
-    width: 90%;
-    transition: all 80ms;
-    font-weight: 600;
-    text-transform: uppercase;
-    opacity: 0;
-  }
-
-  .card .title {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 0.9em;
-    position: absolute;
-    left: 0.625em;
-    bottom: 1.875em;
-    font-weight: 400;
-    color: #000;
-  }
-
-  .card .price {
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 0.9em;
-    position: absolute;
-    left: 0.625em;
-    bottom: 0.625em;
-    color: #000;
-  }
-
-  .card:hover::after {
-    bottom: 0;
-    opacity: 1;
-  }
-
-  .card:active {
-    transform: scale(0.98);
-  }
-
-  .card:active::after {
-    content: "Added !";
-    height: 3.125em;
-  }
-
-  .text {
-    max-width: 55px;
-  }
-
-  .image {
-    background: rgb(241, 241, 241);
-    width: 100%;
-    height: 100%;
-    display: grid;
-    place-items: center;
-  }`;
 
 export default CarCard;
