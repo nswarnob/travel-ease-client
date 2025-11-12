@@ -52,7 +52,7 @@ const HomePage = () => {
         </div>
         <div className='text-center'>
           <h1 className='font-bold text-primary-content text-3xl'>Book your destination with us & Enjoy Ease!</h1>
-          <Link to={'/all-vehicles'} className='btn bg-primary text-white rounded-3xl mt-4'>View All Vehicles</Link>
+          <Link to={'/all-vehicles'} className='btn bg-primary border-none text-white font-bold shadow-md shadow-info rounded-3xl mt-4'>View All Vehicles</Link>
         </div>
 
 
@@ -61,9 +61,9 @@ const HomePage = () => {
 
       </div>
 
-      <div className='my-30 max-w-100 md:max-w-4xl mx-auto'>
+      <div className='my-30 max-w-100 md:max-w-4xl lg:max-w-6xl mx-auto'>
         <h1 className='font-bold text-2xl text-secondary-content text-center mb-15' >Our Latest Vehicle</h1>
-        <div className='grid md:grid-cols-3 sm:grid-cols-1 lg:grid-cols-3 gap-4'>
+        <div className='grid md:grid-cols-2 sm:grid-cols-1 lg:grid-cols-3 gap-4'>
           {
             latestVehicles.map(car => <CarCard key={car._id} car={car}  ></CarCard>)
           }

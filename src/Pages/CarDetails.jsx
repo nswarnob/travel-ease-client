@@ -57,13 +57,13 @@ const CarDetails = () => {
   };
 
   return (
-    <div className="w-100 lg:w-[1200px] md:w-[900px] mx-auto my-15">
+    <div className="w-100 lg:w-[1200px] md:w-[800px] mx-auto my-15">
       {loading ? (
         <Loader></Loader>
       ) : (
         <div className="card lg:card-side md:card-side bg-info text-white shadow-sm">
-          <figure>
-            <img src={car?.coverImage} alt="car" />
+          <figure >
+            <img src={car?.coverImage} className="object-cover" alt="car" />
           </figure>
           <div className="card-body max-w-100">
             <div className="flex justify-between items-center gap-8 mb-5">

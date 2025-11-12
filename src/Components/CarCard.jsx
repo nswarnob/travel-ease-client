@@ -9,11 +9,13 @@ const CarCard = ({ car,  showUpdateButton }) => {
   console.log(car)
   return (
     <div className="card bg-info text-white shadow-md shadow-primary">
+    <Link to={`/car-details/${car._id}`} >
       <figure>
         <img
           src={car.coverImage}
-          alt="car" className='h-60 w-full md:w-80 object-cover ' />
+          alt="car" className='h-60 w-full object-cover ' />
       </figure>
+    </Link>
       <div className='card-body'>   <div className="flex justify-between items-center ">
         <div className='card-content'> <h2 className="card-title">{car.vehicleName}</h2>
           <p className=' text-center text-black bg-warning rounded-full px-3 mt-2' > {car?.availability} </p>
@@ -21,7 +23,7 @@ const CarCard = ({ car,  showUpdateButton }) => {
 
        <div className='space-y-2' >
         <p className='card-title ml-9 ' >{car?.pricePerDay} $</p>
-         <Link to={showUpdateButton? `/update-vehicle/${car._id}`:`/car-details/${car._id}`} className="bg-primary shadow-md py- px-3 text-white font-bold rounded-full"> {showUpdateButton?"Update Details":"View Details"} </Link>
+         <Link to={showUpdateButton? `/update-vehicle/${car._id}`:`/car-details/${car._id}`} className="bg-primary shadow-md py-1.5 px-3 text-white font-bold rounded-full"> {showUpdateButton?"Update Details":"View Details"} </Link>
        </div>
 
       </div></div>

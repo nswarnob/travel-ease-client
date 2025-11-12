@@ -8,7 +8,7 @@ const Navbar = () => {
 
 
   const links = <>
-    <nav className='space-x-2 text-primary-content sm:grid md:grid lg:flex font-bold'>
+    <nav className='space-x-2 text-secondary-content sm:grid md:grid lg:flex font-medium'>
       <NavLink to={'home'} >Home </NavLink>
       <NavLink to={'all-vehicles'} >All Vehicles </NavLink>
       {
@@ -25,8 +25,8 @@ const Navbar = () => {
 
 
   return (
-    <div>
-      <div className="navbar bg-secondary shadow-sm">
+    <div className='bg-secondary shadow-sm' >
+      <div className="navbar max-w-6xl mx-auto">
         <div className="navbar-start">
           <div className="dropdown text-white">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -40,7 +40,7 @@ const Navbar = () => {
               }
             </ul>
           </div>
-          <NavLink to={'/home'}> <img src={logo} className='h-6 w-6' alt="" /> </NavLink>
+          <NavLink to={'/home'} className={'btn bg-primary border-none rounded-full shadow-md'} > <img src={logo} className='h-6 w-6' alt="" /> </NavLink>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
@@ -49,9 +49,9 @@ const Navbar = () => {
             }
           </ul>
         </div>
-        <div className="navbar-end">
+        <div className="navbar-end ">
           {
-            user ? <NavLink to={'home'} className={'btn rounded-full bg-primary text-white'} onClick={logOut} >Logout</NavLink> : <NavLink to={'login'} className={'btn rounded-full bg-primary text-white'} >Login</NavLink>
+            user ? <NavLink to={'home'} className={'btn rounded-full bg-primary text-white border-none shadow-md'} onClick={logOut} >Logout</NavLink> : <NavLink to={'login'} className={'btn rounded-full bg-primary text-white border-none shadow-md'} >Login</NavLink>
           }
         </div>
       </div>
