@@ -57,38 +57,44 @@ const CarDetails = () => {
   };
 
   return (
-    <div className="max-w-[1000px] mx-auto my-15">
+    <div className="w-100 lg:w-[1200px] md:w-[900px] mx-auto my-15">
       {loading ? (
         <Loader></Loader>
       ) : (
-        <div className="card card-side bg-base-100 shadow-sm">
+        <div className="card lg:card-side md:card-side bg-info text-white shadow-sm">
           <figure>
-            <img src={car?.coverImage} alt="Movie" />
+            <img src={car?.coverImage} alt="car" />
           </figure>
-          <div className="card-body">
-            <div>
+          <div className="card-body max-w-100">
+            <div className="flex justify-between items-center gap-8 mb-5">
               {" "}
+              <p className="card-title">{car?.pricePerDay} $ </p>
               <h2 className="card-title"> {car?.vehicleName} </h2>
-              <p>{car?.pricePerDay} $ </p>
-              <p>{car?.availability}</p>
+              
+              <p className="text-center text-black bg-warning rounded-full px-3 mt-2">{car?.availability}</p>
+            </div>
+            <div>
+              <p> {car?.description} Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet earum reiciendis architecto repellendus minima temporibus dignissimos numquam totam, labore velit qui exercitationem atque eos consequatur dolorem ipsa! Neque provident doloribus, quod, debitis fugit quia quaerat illo labore sed et, nam voluptatem nemo. Doloremque distinctio nostrum, perferendis quam ipsam sit ex, qui beatae assumenda enim reprehenderit natus repellendus. Repellat, voluptatum error? </p>
             </div>
 
-            <div>
+          <div className="flex items-center justify-between mt-10">
+              <div className="text-base-300">
               <p>
                 {" "}
-                <span>Driver:</span> {car?.owner}{" "}
+                <span>Driver:</span > {car?.owner}{" "}
               </p>
               <p>
                 {" "}
                 <span>Email:</span> {car?.userEmail}{" "}
               </p>
             </div>
-            <p> {car?.description} </p>
-            <div className="card-actions justify-center">
-              <button className="btn btn-primary" onClick={handleBook}>
+            
+            <div>
+              <button className="btn text-white rounded-3xl btn-primary shadow-md" onClick={handleBook}>
                 Book
               </button>
             </div>
+          </div>
           </div>
         </div>
       )}

@@ -19,7 +19,7 @@ const RegisterPage = () => {
   }
 
   return (
-    <div className='w-100 mx-auto my-10' >
+    <div className='w-80 md:w-100 mx-auto my-10' >
        <StyledWrapper>
       <form onSubmit={handleClick} className="form_container">
         <div className="title_container">
@@ -62,7 +62,7 @@ const RegisterPage = () => {
           </svg>
           <input placeholder="Password" title="Inpit title" name="password" type="password" className="input_field" id="password_field" />
         </div>
-        <button title="Register" type="submit" className="sign-in_btn">
+        <button title="Register" type="submit" className="btn bg-primary text-white">
           <span >Register</span>
         </button>
         <div className="separator">

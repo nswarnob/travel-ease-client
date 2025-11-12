@@ -2,18 +2,19 @@ import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { AuthContext } from "../Providers/AuthProvider";
 import { useParams } from "react-router";
+import Swal from "sweetalert2";
 
 const AddVehiclePage = () => {
   const { user } = useContext(AuthContext); // logged-in user info (displayName, email, etc.)
- const {id} = useParams(); 
+  const { id } = useParams();
 
-const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState({
     vehicleName: "",
     ownerName: "",
     category: "",
     pricePerDay: "",
     location: "",
-    availability: "available",
+    availability: "Available",
     description: "",
     coverImage: "",
   });
@@ -21,18 +22,18 @@ const [formData, setFormData] = useState({
   const [loading, setLoading] = useState(false);
 
 
- useEffect(()=>{
-  if(id){
-    axios.get(`http://localhost:3000/all-vehicles/${id}`)
-    .then(res=> setFormData(res.data))
-    .catch(err=>console.log(err));
-  }
- },[id])
+  useEffect(() => {
+    if (id) {
+      axios.get(`http://localhost:3000/all-vehicles/${id}`)
+        .then(res => setFormData(res.data))
+        .catch(err => console.log(err));
+    }
+  }, [id])
 
 
 
 
-  
+
 
   // Handle field changes
   const handleChange = (e) => {
@@ -54,17 +55,26 @@ const [formData, setFormData] = useState({
 
     setLoading(true);
 
-     //update request
-     if(id){
+    //update request
+    if (id) {
       const res = await axios.put(`http://localhost:3000/all-vehicles/${id}`, vehicleData);
       res.send('Successfull update')
-     }
+      setLoading(false);
+    }
 
     //add request
     try {
       const res = await axios.post("http://localhost:3000/all-vehicles", vehicleData);
       if (res.status === 201) {
-        alert("✅ Vehicle added successfully!");
+        
+Swal.fire({
+  position: "top-end",
+  icon: "success",
+  title: "Your work has been saved",
+  showConfirmButton: false,
+  timer: 1500
+});
+
         setFormData({
           vehicleName: "",
           ownerName: "",
@@ -85,8 +95,8 @@ const [formData, setFormData] = useState({
   };
 
   return (
-    <div className="max-w-2xl mx-auto bg-white p-6 shadow-lg rounded-2xl mt-10">
-      <h2 className="text-2xl font-bold mb-4 text-center">Add New Vehicle</h2>
+    <div className=" w-100 md:max-w-2xl mx-auto  border-info bg-white p-6 shadow-lg rounded-2xl my-10">
+      <h2 className="text-2xl font-bold text-secondary-content mb-4 text-center"> {id ? 'Update Details' : 'Add New Vehicle'} </h2>
       <form onSubmit={handleSubmit} className="space-y-4">
 
         <input
@@ -96,7 +106,7 @@ const [formData, setFormData] = useState({
           onChange={handleChange}
           placeholder="Vehicle Name"
           required
-          className="w-full border p-2 rounded"
+          className="w-full border  p-2 rounded"
         />
 
         <input
@@ -168,18 +178,23 @@ const [formData, setFormData] = useState({
           className="w-full border p-2 rounded"
         />
 
-        
-
-        <div className="text-sm text-gray-600">
-          <strong>User Email:</strong> {user?.email || "Not logged in"}
-        </div>
+        <input
+          type="text"
+          name="coverImage"
+          value={user?.email}
+          placeholder="Cover Image URL"
+          required
+          className="w-full border p-2 rounded"
+        />
 
         <button
           type="submit"
           disabled={loading}
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 w-full"
+          className="bg-primary text-white px-4 py-2 rounded w-full"
         >
-          {loading ? "Saving..." : "Add Vehicle"}
+          {
+            id ? <>{loading ? "Updating..." : "Update Details"}</> : <>{loading ? "Saving..." : "Add Vehicle"}</>
+          }
         </button>
       </form>
     </div>

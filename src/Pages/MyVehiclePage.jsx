@@ -30,11 +30,11 @@ const {user} = useContext(AuthContext);
 console.log(myVehicles)
 
   return (
-    <div>
-       <h1 className='text-center'>My Vehicles</h1>
+    <div className='my-10 max-w-100 md:max-w-4xl mx-auto'>
+       <h1 className='text-center text-3xl font-bold mb-10 text-secondary-content '>My Vehicles</h1>
 
         {
-          loading?<Loader></Loader> : <div className='grid grid-cols-3 gap-4'>
+          loading?<Loader></Loader> : <div className='grid grid-cols-1 lg:grid-cols-3 md:grid-cols-3 gap-4'>
             {
               myVehicles.map(car=> <CarCard key={car._id} car={car}  showUpdateButton={true} >  </CarCard> )
             }

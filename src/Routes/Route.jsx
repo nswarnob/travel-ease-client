@@ -10,67 +10,69 @@ import MyBookingPage from "../Pages/MyBookingPage";
 import AddVehiclePage from "../Pages/AddVehiclePage";
 import Loader from "../Components/Loader";
 import CarDetails from "../Pages/CarDetails";
-
-
-
+import ErrorPage from "../Pages/ErrorPage";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     Component: MainLayOut,
+    errorElement:<ErrorPage></ErrorPage>,
     children: [
       {
-        path: '/home',
+        path: "/home",
         Component: HomePage,
         loader: () => fetch(`http://localhost:3000/latest-vehicles`),
-        hydrateFallbackElement: <Loader></Loader>
-
+        hydrateFallbackElement: <Loader></Loader>,
       },
       {
-        path: 'all-vehicles',
+        path: "all-vehicles",
         Component: AllVehiclesPage,
         loader: () => fetch(`http://localhost:3000/all-vehicles`),
-        hydrateFallbackElement: <Loader></Loader>
+        hydrateFallbackElement: <Loader></Loader>,
       },
       {
-        path: 'login',
+        path: "login",
         Component: LoginPage,
       },
       {
-        path: 'register',
+        path: "register",
         Component: RegisterPage,
       },
       {
-        path: 'my-vehicles',
-        element: <PrivateRoute>
-          <MyVehiclePage></MyVehiclePage>
-        </PrivateRoute>
+        path: "my-vehicles",
+        element: (
+          <PrivateRoute>
+            <MyVehiclePage></MyVehiclePage>
+          </PrivateRoute>
+        ),
       },
       {
-        path:'update-vehicle/:id',
-        element:<AddVehiclePage></AddVehiclePage>
+        path: "update-vehicle/:id",
+        element: <AddVehiclePage></AddVehiclePage>,
       },
       {
-        path: 'my-bookings',
-        element: <PrivateRoute>
-          <MyBookingPage></MyBookingPage>
-        </PrivateRoute>
+        path: "my-bookings",
+        element: (
+          <PrivateRoute>
+            <MyBookingPage></MyBookingPage>
+          </PrivateRoute>
+        ),
       },
       {
-        path: 'add-vehicles',
-        element: <PrivateRoute>
-          <AddVehiclePage></AddVehiclePage>
-        </PrivateRoute>
+        path: "add-vehicles",
+        element: (
+          <PrivateRoute>
+            <AddVehiclePage></AddVehiclePage>
+          </PrivateRoute>
+        ),
       },
-      
+
       {
-        path: 'car-details/:id',
+        path: "car-details/:id",
         loader: () => fetch(`http://localhost:3000/all-vehicles`),
         hydrateFallbackElement: <Loader></Loader>,
-        Component: CarDetails
-      }
-
-
-    ]
+        Component: CarDetails,
+      },
+    ],
   },
 ]);

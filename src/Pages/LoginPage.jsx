@@ -49,7 +49,7 @@ const LoginPage = () => {
           </svg>
           <input placeholder="Password" title="Inpit title" name="password" type="password" className="input_field" id="password_field" />
         </div>
-        <button title="Sign In" type="submit" className="sign-in_btn">
+        <button title="Sign In" type="submit" className="btn bg-primary text-white">
           <span >Sign In</span>
         </button>
         <div className="separator">
