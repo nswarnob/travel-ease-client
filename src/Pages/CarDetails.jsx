@@ -3,6 +3,8 @@ import { useLoaderData, useParams } from "react-router";
 import Loader from "../Components/Loader";
 import { AuthContext } from "../Providers/AuthProvider";
 import axios from "axios";
+import Swal from "sweetalert2";
+import { toast } from "react-toastify";
 
 const CarDetails = () => {
   const { id } = useParams();
@@ -10,7 +12,6 @@ const CarDetails = () => {
   const [loading, setLoading] = useState(false);
   const { user } = useContext(AuthContext);
 
-  console.log(user);
 
   const allData = useLoaderData();
 
@@ -28,7 +29,7 @@ const CarDetails = () => {
   //storing booking data
   const handleBook = async () => {
     if(!user){
-     return alert("Plese log in to book a car!")
+     return toast.warning("Please login to book.")
     }
     setLoading(true);
    try{
@@ -42,13 +43,30 @@ const CarDetails = () => {
     };
     const res = await axios.post("http://localhost:3000/car-bookings", bookingData);
     if (res.status === 201) {
-      alert("✅ Booking successful!");
+      Swal.fire({
+  position: "center",
+  icon: "success",
+  title: "Your Booking has been done.",
+  showConfirmButton: false,
+  timer: 1500
+});
     } else if (res.status === 409) {
-      alert("⚠️ You’ve already booked this car.");
+      Swal.fire({
+  position: "center",
+  icon: "warning",
+  title: "You already booked this car.",
+  showConfirmButton: false,
+  timer: 1500
+});
     } else {
-      alert(res.data?.message || "Something went wrong. Try again.");
+      Swal.fire({
+  position: "center",
+  icon: "error",
+  title: "Something is wrong.",
+  showConfirmButton: false,
+  timer: 1500
+});
     }
-    console.log('booking saved', res.data)
    } catch(err){
     console.log(err);
    } finally {

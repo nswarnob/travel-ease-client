@@ -2,10 +2,12 @@ import React from 'react'
 import { Link, useLoaderData } from 'react-router';
 import styled from 'styled-components';
 import CarCard from '../Components/CarCard';
+import AboutTravelEase from '../Components/AboutTravelEase';
+import FeaturedOwner from '../Components/FeaturedOwner';
 
 const HomePage = () => {
   const latestVehicles = useLoaderData();
-  console.log(latestVehicles);
+  
   return (
     <div>
       <div className='grid max-w-100 md:max-w-2xl mx-auto mt-20 space-y-10'>
@@ -51,24 +53,29 @@ const HomePage = () => {
           </StyledWrapper>
         </div>
         <div className='text-center'>
-          <h1 className='font-bold text-primary-content text-3xl'>Book your destination with us & Enjoy Ease!</h1>
-          <Link to={'/all-vehicles'} className='btn bg-primary border-none text-white font-bold shadow-md shadow-info rounded-3xl mt-4'>View All Vehicles</Link>
+          <h1 className='font-bold text-primary text-3xl'>Book your destination with us & Enjoy Ease!</h1>
+          <Link to={'/all-vehicles'} className='btn bg-accent hover:bg-info border-none text-white font-bold shadow-md shadow-info rounded-3xl mt-4'>View All Vehicles</Link>
         </div>
 
-
-
-
-
       </div>
+   
 
-      <div className='my-30 max-w-100 md:max-w-4xl lg:max-w-6xl mx-auto'>
-        <h1 className='font-bold text-2xl text-secondary-content text-center mb-15' >Our Latest Vehicle</h1>
+      <div className='my-15 max-w-100 md:max-w-4xl lg:max-w-6xl mx-auto'>
+        <h1 className='font-bold text-2xl text-secondary-content text-center mb-10' >Our Latest Vehicle</h1>
         <div className='grid md:grid-cols-2 sm:grid-cols-1 lg:grid-cols-3 gap-4'>
           {
             latestVehicles.map(car => <CarCard key={car._id} car={car}  ></CarCard>)
           }
         </div>
       </div>
+
+  <div className='my-15'>
+        <AboutTravelEase></AboutTravelEase>
+     </div>
+     
+     <div className='mb-10' >
+       <FeaturedOwner></FeaturedOwner>
+     </div>
 
     </div>
   );

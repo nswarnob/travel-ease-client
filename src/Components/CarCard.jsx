@@ -3,19 +3,23 @@ import { Link } from 'react-router';
 
 
 
-const CarCard = ({ car,  showUpdateButton }) => {
+const CarCard = ({ car,  showUpdateButton, handleRemove }) => {
 
   
-  console.log(car)
+
   return (
-    <div className="card bg-info text-white shadow-md shadow-primary">
-    <Link to={`/car-details/${car._id}`} >
-      <figure>
-        <img
+    <div className="card  bg-info text-white shadow-md shadow-accent">
+   
+     <figure className='relative'>
+        {
+          showUpdateButton &&  <button onClick={handleRemove} className='absolute bg-error btn -top-1 -left-1 text-white font-extrabold shadow-md border-none rounded-full'>X</button>}
+            <Link to={`/car-details/${car._id}`} >
+    <img
           src={car.coverImage}
-          alt="car" className='h-60 w-full object-cover ' />
-      </figure>
+          alt="car" className='h-60 w-100 object-cover ' />
     </Link>
+      </figure>
+
       <div className='card-body'>   <div className="flex justify-between items-center ">
         <div className='card-content'> <h2 className="card-title">{car.vehicleName}</h2>
           <p className=' text-center text-black bg-warning rounded-full px-3 mt-2' > {car?.availability} </p>
