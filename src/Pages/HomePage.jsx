@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import CarCard from '../Components/CarCard';
 import AboutTravelEase from '../Components/AboutTravelEase';
 import FeaturedOwner from '../Components/FeaturedOwner';
+import FadeIn from '../Animations/FadeIn';
 
 const HomePage = () => {
   const latestVehicles = useLoaderData();
@@ -61,21 +62,26 @@ const HomePage = () => {
    
 
       <div className='my-15 max-w-100 md:max-w-4xl lg:max-w-6xl mx-auto'>
+        <FadeIn> 
         <h1 className='font-bold text-2xl text-base-content text-center mb-10' >Our Latest Vehicle</h1>
-        <div className='grid md:grid-cols-2 sm:grid-cols-1 lg:grid-cols-3 gap-4'>
+       <div className='grid md:grid-cols-2 sm:grid-cols-1 lg:grid-cols-3 gap-4'>
           {
             latestVehicles.map(car => <CarCard key={car._id} car={car}  ></CarCard>)
           }
-        </div>
+        </div></FadeIn>
       </div>
 
-  <div className='my-15'>
+<FadeIn>
+    <div className='my-15'>
         <AboutTravelEase></AboutTravelEase>
      </div>
+</FadeIn>
      
-     <div className='mb-10' >
+   <FadeIn>
+      <div className='mb-10' >
        <FeaturedOwner></FeaturedOwner>
      </div>
+   </FadeIn>
 
     </div>
   );

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useLoaderData } from "react-router";
 import CarCard from "../Components/CarCard";
 import Loader from "../Components/Loader";
+import ScaleUp from "../Animations/ScaleUp";
 
 const AllVehiclesPage = () => {
   const allData = useLoaderData();
@@ -40,7 +41,7 @@ const AllVehiclesPage = () => {
   };
 
   return (
-    <div className="my-10 max-w-100 md:max-w-4xl lg:max-w-6xl mx-auto">
+      <div className="my-10 max-w-100 md:max-w-3xl lg:max-w-6xl mx-auto">
       <h1 className="font-bold text-3xl text-base-content text-center mb-15">
         All Vehicles
       </h1>
@@ -88,9 +89,9 @@ const AllVehiclesPage = () => {
       {loading ? (
         <Loader></Loader>
       ) : (
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
           {sortedVehicles().map((car) => (
-            <CarCard key={car._id} car={car}></CarCard>
+           <ScaleUp>  <CarCard key={car._id} car={car}></CarCard></ScaleUp>
           ))}
         </div>
       )}

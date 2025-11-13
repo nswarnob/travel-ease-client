@@ -11,12 +11,12 @@ const ThemeControler = () => {
       <input
         type="checkbox"
         onChange={toggleTheme}
-        checked={theme === "dark"}
+        checked={theme === "nord-dark"}
       />
 
       {/* ☀️ sun icon (light mode) */}
       <svg
-        className="swap-off h-8 w-8 fill-current text-yellow-400"
+        className="swap-off h-8 w-8 fill-current rounded-full bg-base-100 shadow text-yellow-400"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
       >
@@ -25,7 +25,7 @@ const ThemeControler = () => {
 
       {/* 🌙 moon icon (dark mode) */}
       <svg
-        className="swap-on h-8 w-8 fill-current text-blue-300"
+        className="swap-on h-8 w-8 fill-current bg-base-100  rounded-full shadow text-blue-300"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
       >

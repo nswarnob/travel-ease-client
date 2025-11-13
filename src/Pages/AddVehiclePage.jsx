@@ -3,6 +3,7 @@ import axios from "axios";
 import { AuthContext } from "../Providers/AuthProvider";
 import { useParams } from "react-router";
 import Swal from "sweetalert2";
+import ScaleUp from "../Animations/ScaleUp";
 
 const AddVehiclePage = () => {
   const { user } = useContext(AuthContext); // logged-in user info (displayName, email, etc.)
@@ -95,7 +96,8 @@ Swal.fire({
   };
 
   return (
-    <div className=" w-100 md:max-w-2xl mx-auto  border-info bg-white p-6 shadow-lg rounded-2xl my-10">
+  <ScaleUp>
+      <div className=" w-100 md:max-w-2xl mx-auto  border-info bg-white p-6 shadow-lg rounded-2xl my-10">
       <h2 className="text-2xl font-bold text-secondary-content mb-4 text-center"> {id ? 'Update Details' : 'Add New Vehicle'} </h2>
       <form onSubmit={handleSubmit} className="space-y-4">
 
@@ -198,6 +200,7 @@ Swal.fire({
         </button>
       </form>
     </div>
+  </ScaleUp>
   );
 };
 

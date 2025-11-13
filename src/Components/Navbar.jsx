@@ -128,7 +128,8 @@ const Navbar = () => {
         </div>
 
         {/* Right Side (Auth) */}
-        <div className="navbar-end">
+        <div className="navbar-end space-x-2">
+           <ThemeControler></ThemeControler>
           {user ? (
             <button
               onClick={logOut}
@@ -144,7 +145,7 @@ const Navbar = () => {
               Login
             </NavLink>
           )}
-          <ThemeControler></ThemeControler>
+         
         </div>
       </div>
     </div>

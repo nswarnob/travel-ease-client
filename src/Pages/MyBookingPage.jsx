@@ -3,6 +3,7 @@ import { AuthContext } from '../Providers/AuthProvider';
 import axios from 'axios';
 import Loader from '../Components/Loader';
 import ErrorPage from './ErrorPage';
+import ScaleUp from '../Animations/ScaleUp';
 
 const MyBookingPage = () => {
   const { user } = useContext(AuthContext)
@@ -42,14 +43,14 @@ const MyBookingPage = () => {
              </div>
               <div className="grid gap-4 text-primary-content">
                 {bookings.map((b) => (
-                  <div key={b._id} className=" bg-info flex justify-between items-center p-4  rounded-lg shadow-md shadow-primary">
+                  <ScaleUp><div key={b._id} className="hover:bg-accent transition-transform duration-300 hover:scale-105 hover:shadow-info hover:shadow-lg bg-info flex justify-between items-center p-4  rounded-lg shadow-md shadow-primary">
                     <div><h3 className="font-semibold text-lg">{b.car_name}</h3>
                     <p>Booking Date: {new Date(b.booking_date).toLocaleString()}</p>
                     <p>Price: ${b.pricePerDay || "N/A"}</p></div>
                     <div>
                       <button className='btn bg-primary text-white font-extrabold shadow-md border-none rounded-full'>X</button>
                     </div>
-                  </div>
+                  </div></ScaleUp>
                 ))}
               </div>
             </div>

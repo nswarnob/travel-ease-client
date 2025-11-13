@@ -8,7 +8,7 @@ const CarCard = ({ car,  showUpdateButton, handleRemove }) => {
   
 
   return (
-    <div className="card  bg-info text-white shadow-md shadow-accent">
+    <div className="card hover:bg-accent hover:shadow-info hover:shadow-lg hover:scale-104 transition-transform duration-300 bg-info text-white shadow-md shadow-accent">
    
      <figure className='relative'>
         {

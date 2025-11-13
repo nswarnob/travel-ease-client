@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import styled from 'styled-components';
 import { AuthContext } from '../Providers/AuthProvider';
 import { toast } from 'react-toastify';
+import ScaleUp from '../Animations/ScaleUp';
 
 
 const RegisterPage = () => {
@@ -27,7 +28,7 @@ const RegisterPage = () => {
 
   return (
     <div className='w-80 md:w-100 mx-auto my-10' >
-      <StyledWrapper>
+     <ScaleUp> <StyledWrapper>
         <form onSubmit={handleClick} className="form_container">
           <div className="title_container">
             <p className="title">Register Here</p>
@@ -95,7 +96,7 @@ const RegisterPage = () => {
           </button>
           <p className="note">Terms of use &amp; Conditions</p>
         </form>
-      </StyledWrapper>
+      </StyledWrapper></ScaleUp>
     </div>
   );
 }

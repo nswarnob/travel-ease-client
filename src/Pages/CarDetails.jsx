@@ -5,6 +5,7 @@ import { AuthContext } from "../Providers/AuthProvider";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { toast } from "react-toastify";
+import ScaleUp from "../Animations/ScaleUp";
 
 const CarDetails = () => {
   const { id } = useParams();
@@ -79,11 +80,11 @@ const CarDetails = () => {
       {loading ? (
         <Loader></Loader>
       ) : (
-        <div className="card lg:card-side md:card-side bg-info text-white shadow-sm">
+      <div className="card lg:card-side md:card-side bg-info text-white shadow-sm">
           <figure >
             <img src={car?.coverImage} className="object-cover" alt="car" />
           </figure>
-          <div className="card-body max-w-100">
+          <div className="card-body  max-w-100">
             <div className="flex justify-between items-center gap-8 mb-5">
               {" "}
               <p className="card-title">{car?.pricePerDay} $ </p>

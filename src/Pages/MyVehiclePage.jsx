@@ -4,6 +4,7 @@ import axios from "axios";
 import Loader from "../Components/Loader";
 import CarCard from "../Components/CarCard";
 import Swal from "sweetalert2";
+import ScaleUp from "../Animations/ScaleUp";
 
 const MyVehiclePage = () => {
   const { user } = useContext(AuthContext);
@@ -85,16 +86,16 @@ Swal.fire({
         <div> {
           myVehicles.length===0 ? <div className="flex justify-center items-center"> <span className="skeleton skeleton-text">Its looks like you didn't add any vehicles, please aff first to see here your vehicle lists...</span></div> : <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-3 gap-4">
             {myVehicles.map((car) => (
-              <CarCard
+             <ScaleUp><CarCard
                 key={car._id}
                 car={car}
                 handleRemove={() => handleRemove(car._id)}
                 showUpdateButton={true}
               >
                 {" "}
-              </CarCard>
+              </CarCard></ScaleUp>
             ))}
-          </div>} </div>
+          </div> } </div>
       )}
     </div>
   );
