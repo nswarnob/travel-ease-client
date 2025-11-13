@@ -93,7 +93,7 @@ const CarDetails = () => {
               <p className="text-center text-black bg-warning rounded-full px-3 mt-2">{car?.availability}</p>
             </div>
             <div>
-              <p> {car?.description} Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet earum reiciendis architecto repellendus minima temporibus dignissimos numquam totam, labore velit qui exercitationem atque eos consequatur dolorem ipsa! Neque provident doloribus, quod, debitis fugit quia quaerat illo labore sed et, nam voluptatem nemo. Doloremque distinctio nostrum, perferendis quam ipsam sit ex, qui beatae assumenda enim reprehenderit natus repellendus. Repellat, voluptatum error? </p>
+              <p className="" > {car?.description} Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet earum reiciendis architecto repellendus minima temporibus dignissimos numquam totam, labore velit qui exercitationem atque eos consequatur dolorem ipsa! Neque provident doloribus, quod, debitis fugit quia quaerat illo labore sed et, nam voluptatem nemo. Doloremque distinctio nostrum, perferendis quam ipsam sit ex, qui beatae assumenda enim reprehenderit natus repellendus. Repellat, voluptatum error? </p>
             </div>
 
           <div className="flex items-center justify-between mt-10">

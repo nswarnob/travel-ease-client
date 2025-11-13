@@ -4,6 +4,7 @@ import axios from 'axios';
 import Loader from '../Components/Loader';
 import ErrorPage from './ErrorPage';
 import ScaleUp from '../Animations/ScaleUp';
+import Swal from 'sweetalert2';
 
 const MyBookingPage = () => {
   const { user } = useContext(AuthContext)
@@ -27,6 +28,45 @@ const MyBookingPage = () => {
   }, [user]);
 
 
+  const handleRemoveBooking = async (bookingId)=>{
+      
+   const result = await Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    });
+     if (!result.isConfirmed) return;
+
+    try{
+       axios.delete(`http://localhost:3000/car-bookings/${bookingId}`);
+
+       const removed= bookings.filter(booking => booking._id !== bookingId);
+       setBookings(removed);
+       Swal.fire({
+             title: "Deleted!",
+             text: "Your file has been deleted.",
+             icon: "success"
+           });
+
+
+    }catch(err){
+       console.log(err)
+   Swal.fire({
+           position: "center",
+           icon: "error",
+           title: `Vehicle deleted Failed. Because of ${err}`,
+           showConfirmButton: false,
+           timer: 1500,
+         });
+    }
+ 
+
+  }
+
 
 
 
@@ -48,7 +88,7 @@ const MyBookingPage = () => {
                     <p>Booking Date: {new Date(b.booking_date).toLocaleString()}</p>
                     <p>Price: ${b.pricePerDay || "N/A"}</p></div>
                     <div>
-                      <button className='btn bg-primary text-white font-extrabold shadow-md border-none rounded-full'>X</button>
+                      <button onClick={()=>handleRemoveBooking(b._id)} className='btn bg-primary text-white font-extrabold shadow-md border-none rounded-full'>X</button>
                     </div>
                   </div></ScaleUp>
                 ))}
