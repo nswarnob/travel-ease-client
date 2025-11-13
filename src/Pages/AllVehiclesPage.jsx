@@ -59,7 +59,7 @@ const AllVehiclesPage = () => {
               type="search"
               value={search}
               required
-              placeholder="Search"
+              placeholder="Search Your Vehicle"s
               className="focus:outline-none"
             />
           </label>

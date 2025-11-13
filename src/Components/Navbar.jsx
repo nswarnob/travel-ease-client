@@ -128,8 +128,17 @@ const Navbar = () => {
         </div>
 
         {/* Right Side (Auth) */}
-        <div className="navbar-end space-x-2">
-           <ThemeControler></ThemeControler>
+        <div className="navbar-end flex items-center space-x-2">
+            <div>
+              {
+              user && <img src={user?.photoURL || 'https://m.media-amazon.com/images/S/pv-target-images/16627900db04b76fae3b64266ca161511422059cd24062fb5d900971003a0b70._SX1080_FMjpg_.jpg' } alt="User Avatar" className="rounded-full h-10 w-10" onError={(e) => {
+                    e.target.src = 'https://m.media-amazon.com/images/S/pv-target-images/16627900db04b76fae3b64266ca161511422059cd24062fb5d900971003a0b70._SX1080_FMjpg_.jpg';
+                  }} />
+            }
+            </div>
+         <div>
+               <ThemeControler></ThemeControler>
+         </div>
           {user ? (
             <button
               onClick={logOut}
