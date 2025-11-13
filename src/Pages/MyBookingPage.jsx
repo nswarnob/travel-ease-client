@@ -36,7 +36,7 @@ const MyBookingPage = () => {
         !bookings.length ? <ErrorPage></ErrorPage> : (<div>
           {
             loading ? <Loader></Loader> : <div className="max-w-3xl mx-auto my-10">
-             <div className='flex text-secondary-content justify-between items-center ' >
+             <div className='flex text-base-content justify-between items-center ' >
                <h2 className="text-2xl font-bold mb-4">My Bookings</h2>
               <p> <strong>Total:</strong> {bookings.length}</p>
              </div>

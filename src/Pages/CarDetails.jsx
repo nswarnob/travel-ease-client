@@ -109,7 +109,7 @@ const CarDetails = () => {
             
             <div>
               <button className="btn text-white rounded-3xl btn-primary shadow-md" onClick={handleBook}>
-                Book
+                Book Now
               </button>
             </div>
           </div>

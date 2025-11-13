@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { NavLink } from "react-router";
 import logo from "../assets/logo-white.png";
 import { AuthContext } from "../Providers/AuthProvider";
+import ThemeControler from "./ThemeControler";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -87,7 +88,7 @@ const Navbar = () => {
             <div
               tabIndex={0}
               role="button"
-              className="btn btn-ghost text-white lg:hidden"
+              className="btn btn-ghost text-primary lg:hidden"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -123,7 +124,7 @@ const Navbar = () => {
 
         {/* Center Links */}
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal">{links}</ul>
+          <ul className="menu menu-horizontal font-semibold text-primary-content text-lg">{links}</ul>
         </div>
 
         {/* Right Side (Auth) */}
@@ -143,6 +144,7 @@ const Navbar = () => {
               Login
             </NavLink>
           )}
+          <ThemeControler></ThemeControler>
         </div>
       </div>
     </div>

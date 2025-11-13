@@ -8,11 +8,12 @@ import Swal from "sweetalert2";
 const MyVehiclePage = () => {
   const { user } = useContext(AuthContext);
   const [myVehicles, setMyVehicles] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       if (!user?.email) return;
+      setLoading(true)
       try {
         const res = await axios.get(
           `http://localhost:3000/my-vehicles?email=${user.email}`
@@ -29,10 +30,24 @@ const MyVehiclePage = () => {
 
   //remove vehicle
   const handleRemove = async (id) => {
-    const confirmDelete = window.confirm(
-      "Are you sure you want to delete this vehicle?"
-    );
-    if (!confirmDelete) return;
+    
+Swal.fire({
+  title: "Are you sure?",
+  text: "You won't be able to revert this!",
+  icon: "warning",
+  showCancelButton: true,
+  confirmButtonColor: "#3085d6",
+  cancelButtonColor: "#d33",
+  confirmButtonText: "Yes, delete it!"
+}).then((result) => {
+  if (result.isConfirmed) {
+    Swal.fire({
+      title: "Deleted!",
+      text: "Your file has been deleted.",
+      icon: "success"
+    });
+  }
+});
 
     try {
       const res = await axios.delete(
@@ -60,7 +75,7 @@ const MyVehiclePage = () => {
   }
   return (
     <div className="my-10 max-w-100 md:max-w-4xl mx-auto">
-      <h1 className="text-center text-3xl font-bold mb-10 text-secondary-content ">
+      <h1 className="text-center text-3xl font-bold mb-10 text-base-content ">
         My Vehicles
       </h1>
 
@@ -68,7 +83,7 @@ const MyVehiclePage = () => {
         <Loader></Loader>
       ) : (
         <div> {
-          myVehicles.length === 0 ? <div className="flex justify-center items-center"> <span className="skeleton skeleton-text">Its looks like you didn't add any vehicles, please aff first to see here your vehicle lists...</span></div> : <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-3 gap-4">
+          myVehicles.length===0 ? <div className="flex justify-center items-center"> <span className="skeleton skeleton-text">Its looks like you didn't add any vehicles, please aff first to see here your vehicle lists...</span></div> : <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-3 gap-4">
             {myVehicles.map((car) => (
               <CarCard
                 key={car._id}

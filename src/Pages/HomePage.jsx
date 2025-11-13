@@ -61,7 +61,7 @@ const HomePage = () => {
    
 
       <div className='my-15 max-w-100 md:max-w-4xl lg:max-w-6xl mx-auto'>
-        <h1 className='font-bold text-2xl text-secondary-content text-center mb-10' >Our Latest Vehicle</h1>
+        <h1 className='font-bold text-2xl text-base-content text-center mb-10' >Our Latest Vehicle</h1>
         <div className='grid md:grid-cols-2 sm:grid-cols-1 lg:grid-cols-3 gap-4'>
           {
             latestVehicles.map(car => <CarCard key={car._id} car={car}  ></CarCard>)
