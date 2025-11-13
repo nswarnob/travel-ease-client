@@ -69,10 +69,10 @@ const MyVehiclePage = () => {
   }
   return (
     <div className="my-10 max-w-100 md:max-w-4xl mx-auto">
-      <h1 className="text-center text-3xl font-bold mb-10 text-base-content ">
+      <h1 className="text-center text-3xl font-bold text-base-content ">
         My Vehicles
       </h1>
-
+ <hr className="text-base-300 my-5" />
       {loading ? (
         <Loader></Loader>
       ) : (

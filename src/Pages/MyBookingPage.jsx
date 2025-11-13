@@ -77,10 +77,11 @@ const MyBookingPage = () => {
         !bookings.length ? <ErrorPage></ErrorPage> : (<div>
           {
             loading ? <Loader></Loader> : <div className="max-w-3xl mx-auto my-10">
-             <div className='flex text-base-content justify-between items-center ' >
-               <h2 className="text-2xl font-bold mb-4">My Bookings</h2>
-              <p> <strong>Total:</strong> {bookings.length}</p>
+             <div className='flex text-xl font-semibold text-base-content px-2 justify-between items-center ' >
+               <h2 >My Bookings</h2>
+              <p> Total: {bookings.length}</p>
              </div>
+              <hr className="text-base-300 my-3" />
               <div className="grid gap-4 text-primary-content">
                 {bookings.map((b) => (
                   <ScaleUp><div key={b._id} className="hover:bg-accent transition-transform duration-300 hover:scale-105 hover:shadow-primary hover:shadow-lg bg-info flex justify-between items-center p-4  rounded-lg shadow-sm shadow-primary">

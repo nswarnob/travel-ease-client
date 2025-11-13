@@ -45,37 +45,51 @@ const AllVehiclesPage = () => {
     }, 400);
   };
 
+  const handleSearchChange = (e)=>{
+    setLoading(true);
+    setSearch(e.target.value)
+
+      setTimeout(() => {
+      setLoading(false);
+    }, 400);
+  }
+
   return (
     <div className="my-10 max-w-100 md:max-w-3xl lg:max-w-6xl mx-auto">
-      <h1 className="font-bold text-3xl text-base-content text-center mb-15">
-        All Vehicles
-      </h1>
+      <div className="text-base-content text-center mb-15 space-y-3">
+        <h1 className="font-bold text-3xl">
+          All Vehicles
+        </h1>
+        <p className="text-base-content/80 px-50">We are the best vehicle service in this world. Keep trusting on us, we will make your life more easier than you think. Travel anywhere you want with full of relax and ease.</p>
+      </div>
+
       <div className="flex items-center justify-between px-2 mb-4">
         <h3 className="font-semibold">({allData.length}) Vehicles</h3>
         <div>
-          <label className="input w-60 focus:outline-0 border-none outline-none ">
+          <label className="input bg-base-300 rounded-full w-60 focus:outline-0 border-none outline-none ">
             <input
-              onChange={(e) => setSearch(e.target.value)}
+              onChange={handleSearchChange}
               type="search"
               value={search}
               required
-              placeholder="Search Your Vehicle"s
-              className="focus:outline-none"
+              placeholder="Search Your Vehicle"
+              className="focus:outline-none placeholder:text-center"
             />
           </label>
         </div>
         <div className="filter">
           <input
-            className="btn filter-reset"
+            className="btn bg-base-300 rounded-full filter-reset"
             onChange={handleSortChange}
             checked={sortOrder === "none"}
             type="radio"
             name="metaframeworks"
             value={"none"}
             aria-label="All"
+
           />
           <input
-            className="btn"
+            className="btn bg-base-300 rounded-full"
             type="radio"
             onChange={handleSortChange}
             checked={sortOrder === "price-asc"}
@@ -84,7 +98,7 @@ const AllVehiclesPage = () => {
             aria-label="Lowest $"
           />
           <input
-            className="btn"
+            className="btn bg-base-300 rounded-full"
             type="radio"
             onChange={handleSortChange}
             checked={sortOrder === "price-desc"}
@@ -93,7 +107,7 @@ const AllVehiclesPage = () => {
             aria-label="Highest $"
           />
           <input
-            className="btn"
+            className="btn bg-base-300 rounded-full"
             type="radio"
             onChange={handleSortChange}
             checked={sortOrder === "default"}
@@ -103,6 +117,7 @@ const AllVehiclesPage = () => {
           />
         </div>
       </div>
+      <hr className="text-base-300 my-3" />
       {loading ? (
         <Loader></Loader>
       ) : (

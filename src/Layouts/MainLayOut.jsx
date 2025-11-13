@@ -8,7 +8,7 @@ const MainLayOut = () => {
   return (
     <div className='mx-auto'>
       <header> <Navbar></Navbar> </header>
-      <main className='min-h-auto '><Outlet> </Outlet><ToastContainer></ToastContainer> </main>
+      <main className='min-h-screen '><Outlet> </Outlet><ToastContainer></ToastContainer> </main>
       <footer><Footer></Footer></footer>
     </div>
   )

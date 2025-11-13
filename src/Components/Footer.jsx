@@ -119,6 +119,7 @@ const Footer = () => {
             Copyright © {new Date().getFullYear()} — All rights reserved by{' '}
             <span className="font-semibold text-accent">TravelEase</span> — Vehicle Booking & Trip Management Platform
           </p>
+          
         </aside>
       </div>
     </footer>
