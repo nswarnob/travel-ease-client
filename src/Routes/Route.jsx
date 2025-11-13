@@ -20,6 +20,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/home",
+        index: true,
         Component: HomePage,
         loader: () => fetch(`http://localhost:3000/latest-vehicles`),
         hydrateFallbackElement: <Loader></Loader>,

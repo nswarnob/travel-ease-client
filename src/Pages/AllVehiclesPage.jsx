@@ -9,9 +9,15 @@ const AllVehiclesPage = () => {
   const [sortOrder, setSortOrder] = useState("none");
   const [loading, setLoading] = useState(false);
 
- if(!allData){
-  return <Loader></Loader>;
- }
+  const [search, setSearch] = useState("");
+  const term = search.trim().toLowerCase();
+  const searchedApps = term
+    ? allData.filter((car) => car?.vehicleName.toLowerCase().includes(term))
+    : allData;
+
+  if (!allData) {
+    return <Loader></Loader>;
+  }
 
   const sortedVehicles = () => {
     if (sortOrder === "none") {
@@ -20,7 +26,6 @@ const AllVehiclesPage = () => {
 
     const sorted = [...allData];
     if (sortOrder === "price-asc") {
- 
       return sorted.sort((a, b) => a.pricePerDay - b.pricePerDay);
     }
     if (sortOrder === "price-desc") {
@@ -32,21 +37,33 @@ const AllVehiclesPage = () => {
   };
 
   const handleSortChange = (e) => {
-    setLoading(true)
+    setLoading(true);
     setSortOrder(e.target.value);
 
-    setTimeout(()=>{
+    setTimeout(() => {
       setLoading(false);
-    },400);
+    }, 400);
   };
 
   return (
-      <div className="my-10 max-w-100 md:max-w-3xl lg:max-w-6xl mx-auto">
+    <div className="my-10 max-w-100 md:max-w-3xl lg:max-w-6xl mx-auto">
       <h1 className="font-bold text-3xl text-base-content text-center mb-15">
         All Vehicles
       </h1>
       <div className="flex items-center justify-between px-2 mb-4">
-        <h3 className="font-semibold" >({allData.length}) Vehicles</h3>
+        <h3 className="font-semibold">({allData.length}) Vehicles</h3>
+        <div>
+          <label className="input w-60 focus:outline-0 border-none outline-none ">
+            <input
+              onChange={(e) => setSearch(e.target.value)}
+              type="search"
+              value={search}
+              required
+              placeholder="Search"
+              className="focus:outline-none"
+            />
+          </label>
+        </div>
         <div className="filter">
           <input
             className="btn filter-reset"
@@ -89,9 +106,15 @@ const AllVehiclesPage = () => {
       {loading ? (
         <Loader></Loader>
       ) : (
-       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {sortedVehicles().map((car) => (
-           <ScaleUp>  <CarCard key={car._id} car={car}></CarCard></ScaleUp>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {(searchedApps && searchedApps.length > 0
+            ? searchedApps
+            : sortedVehicles()
+          ).map((car) => (
+            <ScaleUp>
+              {" "}
+              <CarCard key={car._id} car={car}></CarCard>
+            </ScaleUp>
           ))}
         </div>
       )}
