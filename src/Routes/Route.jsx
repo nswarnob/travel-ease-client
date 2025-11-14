@@ -21,13 +21,13 @@ export const router = createBrowserRouter([
       {  
         index: true,
         Component: HomePage,
-        loader: () => fetch(`http://localhost:3000/latest-vehicles`),
+        loader: () => fetch(`${import.meta.env.VITE_API_URL}/latest-vehicles`),
         hydrateFallbackElement: <Loader></Loader>,
       },
       {
         path: "all-vehicles",
         Component: AllVehiclesPage,
-        loader: () => fetch(`http://localhost:3000/all-vehicles`),
+        loader: () => fetch(`${import.meta.env.VITE_API_URL}/all-vehicles`),
         hydrateFallbackElement: <Loader></Loader>,
       },
       {
@@ -69,7 +69,7 @@ export const router = createBrowserRouter([
 
       {
         path: "car-details/:id",
-        loader: () => fetch(`http://localhost:3000/all-vehicles`),
+        loader: () => fetch(`${import.meta.env.VITE_API_URL}/all-vehicles`),
         hydrateFallbackElement: <Loader></Loader>,
         Component: CarDetails,
       },

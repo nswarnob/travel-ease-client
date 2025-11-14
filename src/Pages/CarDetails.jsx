@@ -2,17 +2,17 @@ import { useContext, useEffect, useState } from "react";
 import { useLoaderData, useParams } from "react-router";
 import Loader from "../Components/Loader";
 import { AuthContext } from "../Providers/AuthProvider";
-import axios from "axios";
 import Swal from "sweetalert2";
 import { toast } from "react-toastify";
-import ScaleUp from "../Animations/ScaleUp";
+import useAxios from "../hooks/useAxios";
+
 
 const CarDetails = () => {
   const { id } = useParams();
   const [car, setCar] = useState();
   const [loading, setLoading] = useState(false);
   const { user } = useContext(AuthContext);
-
+  const axiosSecure = useAxios();
 
   const allData = useLoaderData();
 
@@ -42,7 +42,7 @@ const CarDetails = () => {
       pricePerDay:car?.pricePerDay,
       booking_date: new Date().toISOString(),
     };
-    const res = await axios.post("http://localhost:3000/car-bookings", bookingData);
+    const res = await axiosSecure.post("/car-bookings", bookingData);
     if (res.status === 201) {
       Swal.fire({
   position: "center",
