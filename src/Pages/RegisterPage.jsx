@@ -38,7 +38,7 @@ const RegisterPage = () => {
     try {
       await signInWithGoogle();
       toast.success("Registered successfully!");
-      navigate('/home');
+      navigate('/');
     } catch (error) {
       toast.error(error.message || "Google registration failed!");
     }

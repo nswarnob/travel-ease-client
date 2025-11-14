@@ -1,23 +1,24 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
-import axios from "axios";
 import Loader from "../Components/Loader";
 import CarCard from "../Components/CarCard";
 import Swal from "sweetalert2";
 import ScaleUp from "../Animations/ScaleUp";
+import useAxios from "../hooks/useAxios";
 
 const MyVehiclePage = () => {
   const { user } = useContext(AuthContext);
   const [myVehicles, setMyVehicles] = useState([]);
   const [loading, setLoading] = useState(false);
+  const axiosSecure = useAxios();
 
   useEffect(() => {
     const fetchData = async () => {
       if (!user?.email) return;
       setLoading(true)
       try {
-        const res = await axios.get(
-          `http://localhost:3000/my-vehicles?email=${user.email}`
+        const res = await axiosSecure.get(
+          `/my-vehicles?email=${user.email}`
         );
         setMyVehicles(res.data);
       } catch (err) {
@@ -27,7 +28,7 @@ const MyVehiclePage = () => {
       }
     };
     fetchData();
-  }, [user]);
+  }, [user,axiosSecure]);
 
   //remove vehicle
   const handleRemove = async (id) => {
@@ -44,8 +45,8 @@ const MyVehiclePage = () => {
      if (!result.isConfirmed) return;
 
     try {
-      const res = await axios.delete(
-        `http://localhost:3000/all-vehicles/${id}`
+      const res = await axiosSecure.delete(
+        `/all-vehicles/${id}`
       );
       if (res.status === 200) {
         Swal.fire({

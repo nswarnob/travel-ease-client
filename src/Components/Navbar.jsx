@@ -11,7 +11,7 @@ const Navbar = () => {
     <>
       <li>
         <NavLink
-          to="/home"
+          to="/"
           className={({ isActive }) =>
             `px-3 py-2 transition-all duration-300 hover:text-accent ${
               isActive ? "text-accent font-semibold" : "text-secondary-content"
@@ -115,7 +115,7 @@ const Navbar = () => {
 
           {/* Logo */}
           <NavLink
-            to="/home"
+            to="/"
             className="btn bg-primary border-none rounded-full shadow-md hover:scale-105 transition-transform"
           >
             <img src={logo} className="h-5 w-5" alt="TravelEase logo" />

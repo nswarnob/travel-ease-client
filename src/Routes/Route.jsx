@@ -18,8 +18,7 @@ export const router = createBrowserRouter([
     Component: MainLayOut,
     errorElement:<ErrorPage></ErrorPage>,
     children: [
-      {
-        path: "/home",
+      {  
         index: true,
         Component: HomePage,
         loader: () => fetch(`http://localhost:3000/latest-vehicles`),

@@ -1,21 +1,22 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../Providers/AuthProvider';
-import axios from 'axios';
 import Loader from '../Components/Loader';
 import ErrorPage from './ErrorPage';
 import ScaleUp from '../Animations/ScaleUp';
 import Swal from 'sweetalert2';
+import useAxios from '../hooks/useAxios';
 
 const MyBookingPage = () => {
   const { user } = useContext(AuthContext)
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
+  const axiosSecure = useAxios();
 
   useEffect(() => {
     const fetchData = async () => {
       if (!user?.email) return;
       try {
-        const res = await axios.get(`http://localhost:3000/car-bookings?email=${user.email}`)
+        const res = await axiosSecure.get(`/car-bookings?email=${user?.email}`)
         setBookings(res.data);
       }
       catch (err) {
@@ -25,7 +26,7 @@ const MyBookingPage = () => {
       }
     }
     fetchData();
-  }, [user]);
+  }, [user,axiosSecure]);
 
 
   const handleRemoveBooking = async (bookingId)=>{
@@ -42,7 +43,7 @@ const MyBookingPage = () => {
      if (!result.isConfirmed) return;
 
     try{
-       axios.delete(`http://localhost:3000/car-bookings/${bookingId}`);
+      await axiosSecure.delete(`/car-bookings/${bookingId}`);
 
        const removed= bookings.filter(booking => booking._id !== bookingId);
        setBookings(removed);

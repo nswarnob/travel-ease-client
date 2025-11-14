@@ -1,13 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
-import axios from "axios";
 import { AuthContext } from "../Providers/AuthProvider";
 import { useParams } from "react-router";
 import Swal from "sweetalert2";
 import ScaleUp from "../Animations/ScaleUp";
+import useAxios from "../hooks/useAxios";
 
 const AddVehiclePage = () => {
   const { user } = useContext(AuthContext); // logged-in user info (displayName, email, etc.)
   const { id } = useParams();
+  const axiosSecure = useAxios();
 
   const [formData, setFormData] = useState({
     vehicleName: "",
@@ -25,11 +26,11 @@ const AddVehiclePage = () => {
 
   useEffect(() => {
     if (id) {
-      axios.get(`http://localhost:3000/all-vehicles/${id}`)
+      axiosSecure.get(`/all-vehicles/${id}`)
         .then(res => setFormData(res.data))
         .catch(err => console.log(err));
     }
-  }, [id])
+  }, [id,axiosSecure])
 
 
 
@@ -58,14 +59,14 @@ const AddVehiclePage = () => {
 
     //update request
     if (id) {
-      const res = await axios.put(`http://localhost:3000/all-vehicles/${id}`, vehicleData);
+      const res = await axiosSecure.put(`/all-vehicles/${id}`, vehicleData);
       res.send('Successfull update')
       setLoading(false);
     }
 
     //add request
     try {
-      const res = await axios.post("http://localhost:3000/all-vehicles", vehicleData);
+      const res = await axiosSecure.post("/all-vehicles", vehicleData);
       if (res.status === 201) {
         
 Swal.fire({

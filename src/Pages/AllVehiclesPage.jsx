@@ -60,7 +60,7 @@ const AllVehiclesPage = () => {
         <h1 className="font-bold text-3xl">
           All Vehicles
         </h1>
-        <p className="text-base-content/80 px-50">We are the best vehicle service in this world. Keep trusting on us, we will make your life more easier than you think. Travel anywhere you want with full of relax and ease.</p>
+        <p className="text-base-content/80 lg:px-50 px-0 md:px-50">We are the best vehicle service in this world. Keep trusting on us, we will make your life more easier than you think. Travel anywhere you want with full of relax and ease.</p>
       </div>
 
       <div className="flex items-center justify-between px-2 mb-4">
@@ -126,7 +126,7 @@ const AllVehiclesPage = () => {
             ? searchedApps
             : sortedVehicles()
           ).map((car) => (
-            <ScaleUp>
+            <ScaleUp key={car._id} >
               {" "}
               <CarCard key={car._id} car={car}></CarCard>
             </ScaleUp>

@@ -26,7 +26,7 @@ const navigate = useNavigate();
       try {
       await signIn(email, password);
       toast.success("Logged in successfully!");
-      navigate('/home')
+      navigate('/')
     } catch (error) {
       toast.error(error.message || 'Login failed');
     }
@@ -36,7 +36,7 @@ const navigate = useNavigate();
     try {
       await signInWithGoogle();
       toast.success("Logged in successfully!");
-      navigate('/home');
+      navigate('/');
     } catch (error) {
       toast.error(error.message || "Google login failed!");
     }

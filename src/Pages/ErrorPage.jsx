@@ -20,7 +20,7 @@ const ErrorPage = () => {
       </p>
 
       <Link
-        to="/home"
+        to="/"
         className="bg-primary hover:bg-info text-white px-6 py-2 rounded-lg transition"
       >
         Go Back Home
