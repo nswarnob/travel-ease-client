@@ -11,39 +11,30 @@ const AllVehiclesPage = () => {
    const [search, setSearch] = useState("");
 
 
-
    if (!allData) {
     return <Loader></Loader>;
   }
 
 
- 
- 
-
   const displayVehicles = () => {
 
     const term = search.trim().toLowerCase();
-  const flexData = term
-    ? allData.filter((car) => car?.vehicleName.toLowerCase().includes(term))
-    : allData;
 
+    const flexData = term
+      ? allData.filter((car) => car?.vehicleName.toLowerCase().includes(term))
+      : [...allData];
 
-
-      //sorting
-    if (sortOrder === "none") {
-      return allData;
-    }
-
-    const sorted = [...flexData ];
     if (sortOrder === "price-asc") {
-      return sorted.sort((a, b) => a.pricePerDay - b.pricePerDay);
+      flexData.sort((a, b) => a.pricePerDay - b.pricePerDay);
     }
     if (sortOrder === "price-desc") {
-      return sorted.sort((a, b) => b.pricePerDay - a.pricePerDay);
+      flexData.sort((a, b) => b.pricePerDay - a.pricePerDay);
     }
     if (sortOrder === "default") {
-      return sorted.filter((car) => car.availability === "Available");
+      flexData.filter((car) => car.availability === "Available");
     }
+
+    return flexData;
   };
 
   const handleSortChange = (e) => {
