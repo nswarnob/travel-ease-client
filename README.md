@@ -1,16 +1,24 @@
-# React + Vite
+Hey, my name is Sharif Uddin Arnob, I'm passionate developer. This is my one of MERN Project's that includes very basic but extra-ordinary type features. Pull requests are welcome! For major updates, open an issue first to discuss what you’d like to change.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a simple and efficient backend server built with Node.js, Express, and MongoDB for managing travel-related data such as vehicles, popular destinations, upcoming tours, and user bookings.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## React Compiler
+Tech Stack: 
+*FrontEnd- tailwind, react, daisyui, framer motion, styled wrapper, sweet alert
+*Authentication- firebase
+*API Handling: Axios
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Expanding the ESLint configuration
+Features: 
+-User bookings and remove booking.
+-Add vehicles, update vehicles data & remove it.
+-Search + sort combined filtering
+-Protected routes using Firebase
+-Responsive design
+-Simple animations
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+Live: https://travel-ease-client-eta.vercel.app/
+
+

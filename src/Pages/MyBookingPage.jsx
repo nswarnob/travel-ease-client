@@ -74,10 +74,10 @@ const MyBookingPage = () => {
   return (
 
     <div className='max-w-100 md:max-w-3xl lg:max-w-6xl mx-auto' >
-      {
-        !bookings.length ? <ErrorPage></ErrorPage> : (<div>
+      {loading ? <Loader></Loader> 
+        : (<div>
           {
-            loading ? <Loader></Loader> : <div className="max-w-3xl mx-auto my-10">
+            !bookings.length ? <ErrorPage></ErrorPage> : <div className="max-w-3xl mx-auto my-10">
              <div className='flex text-xl font-semibold text-base-content px-2 justify-between items-center ' >
                <h2 >My Bookings</h2>
               <p> Total: {bookings.length}</p>
