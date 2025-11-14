@@ -17,6 +17,7 @@ Features:
 -Protected routes using Firebase
 -Responsive design
 -Simple animations
+-Theme switchers
 
 
 Live: https://travel-ease-client-eta.vercel.app/
