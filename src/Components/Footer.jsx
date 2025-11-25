@@ -5,7 +5,7 @@ import { NavLink } from 'react-router';
 const Footer = () => {
     const { user} = useContext(AuthContext);
   return (
-    <footer className="bg-base-100 text-base-content py-10 px-5 md:px-10 font-light">
+    <footer className="bg-base-200 text-base-content py-10 px-5 md:px-10 font-light">
       <div className="max-w-6xl mx-auto flex flex-col items-center space-y-6 text-center">
         
         {/* Navigation Links */}

@@ -39,7 +39,9 @@ const Navbar = () => {
             to="/my-vehicles"
             className={({ isActive }) =>
               `px-3 py-2 transition-all duration-300 hover:text-accent ${
-                isActive ? "text-accent font-semibold" : "text-secondary-content"
+                isActive
+                  ? "text-accent font-semibold"
+                  : "text-secondary-content"
               }`
             }
           >
@@ -53,7 +55,9 @@ const Navbar = () => {
             to="/add-vehicles"
             className={({ isActive }) =>
               `px-3 py-2 transition-all duration-300 hover:text-accent ${
-                isActive ? "text-accent font-semibold" : "text-secondary-content"
+                isActive
+                  ? "text-accent font-semibold"
+                  : "text-secondary-content"
               }`
             }
           >
@@ -67,7 +71,9 @@ const Navbar = () => {
             to="/my-bookings"
             className={({ isActive }) =>
               `px-3 py-2 transition-all duration-300 hover:text-accent ${
-                isActive ? "text-accent font-semibold" : "text-secondary-content"
+                isActive
+                  ? "text-accent font-semibold"
+                  : "text-secondary-content"
               }`
             }
           >
@@ -79,7 +85,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="bg-base-100 shadow-sm sticky top-0 z-50">
+    <div className="bg-base-200 shadow-sm sticky top-0 z-50">
       <div className="navbar max-w-6xl mx-auto">
         {/* Left Side */}
         <div className="navbar-start">
@@ -124,21 +130,32 @@ const Navbar = () => {
 
         {/* Center Links */}
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal font-semibold text-primary-content text-lg">{links}</ul>
+          <ul className="menu menu-horizontal font-semibold text-primary-content text-lg">
+            {links}
+          </ul>
         </div>
 
         {/* Right Side (Auth) */}
         <div className="navbar-end flex items-center space-x-2">
-            <div>
-              {
-              user && <img src={user?.photoURL || 'https://m.media-amazon.com/images/S/pv-target-images/16627900db04b76fae3b64266ca161511422059cd24062fb5d900971003a0b70._SX1080_FMjpg_.jpg' } alt="User Avatar" className="rounded-full h-10 w-10" onError={(e) => {
-                    e.target.src = 'https://m.media-amazon.com/images/S/pv-target-images/16627900db04b76fae3b64266ca161511422059cd24062fb5d900971003a0b70._SX1080_FMjpg_.jpg';
-                  }} />
-            }
-            </div>
-         <div>
-               <ThemeControler></ThemeControler>
-         </div>
+          <div>
+            {user && (
+              <img
+                src={
+                  user?.photoURL ||
+                  "https://m.media-amazon.com/images/S/pv-target-images/16627900db04b76fae3b64266ca161511422059cd24062fb5d900971003a0b70._SX1080_FMjpg_.jpg"
+                }
+                alt="User Avatar"
+                className="rounded-full h-10 w-10"
+                onError={(e) => {
+                  e.target.src =
+                    "https://m.media-amazon.com/images/S/pv-target-images/16627900db04b76fae3b64266ca161511422059cd24062fb5d900971003a0b70._SX1080_FMjpg_.jpg";
+                }}
+              />
+            )}
+          </div>
+          <div>
+            <ThemeControler></ThemeControler>
+          </div>
           {user ? (
             <button
               onClick={logOut}
@@ -154,7 +171,6 @@ const Navbar = () => {
               Login
             </NavLink>
           )}
-         
         </div>
       </div>
     </div>
