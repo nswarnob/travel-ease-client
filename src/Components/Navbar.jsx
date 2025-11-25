@@ -79,7 +79,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="bg-white shadow-sm sticky top-0 z-50">
+    <div className="bg-base-100 shadow-sm sticky top-0 z-50">
       <div className="navbar max-w-6xl mx-auto">
         {/* Left Side */}
         <div className="navbar-start">

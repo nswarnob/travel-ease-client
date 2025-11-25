@@ -58,81 +58,95 @@ const AllVehiclesPage = () => {
   const finalData = displayVehicles();
 
   return (
-    <div className="my-10 max-w-100 md:max-w-3xl lg:max-w-6xl mx-auto">
-      <div className="text-base-content text-center mb-15 space-y-3">
-        <h1 className="font-bold text-3xl">
-          All Vehicles
-        </h1>
-        <p className="text-base-content/80 lg:px-50 px-0 md:px-50">We are the best vehicle service in this world. Keep trusting on us, we will make your life more easier than you think. Travel anywhere you want with full of relax and ease.</p>
-      </div>
+  <div className="my-10 max-w-100 md:max-w-3xl lg:max-w-6xl mx-auto">
+  {/* TITLE & DESCRIPTION */}
+  <div className="text-base-content text-center mb-15 space-y-3">
+    <h1 className="font-bold text-3xl">All Vehicles</h1>
+    <p className="text-base-content/80 px-0 md:px-20 lg:px-52">
+      We are the best vehicle service in this world. Keep trusting on us, we will make your life more easier than you think. Travel anywhere you want with full of relax and ease.
+    </p>
+  </div>
 
-      <div className="flex items-center justify-between px-2 mb-4">
-        <h3 className="font-semibold">({finalData.length}) Vehicles</h3>
-        <div>
-          <label className="input bg-base-300 rounded-full w-60 focus:outline-0 border-none outline-none ">
-            <input
-              onChange={handleSearchChange}
-              type="search"
-              value={search}
-              required
-              placeholder="Search Your Vehicle"
-              className="focus:outline-none placeholder:text-center"
-            />
-          </label>
-        </div>
-        <div className="filter">
-          <input
-            className="btn bg-base-300 rounded-full filter-reset"
-            onChange={handleSortChange}
-            checked={sortOrder === "none"}
-            type="radio"
-            name="metaframeworks"
-            value={"none"}
-            aria-label="All"
+  {/* FILTER BAR */}
+  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 px-2 mb-4">
+    
+    {/* Count */}
+    <h3 className="font-semibold text-center md:text-left">
+      ({finalData.length}) Vehicles
+    </h3>
 
-          />
-          <input
-            className="btn bg-base-300 rounded-full"
-            type="radio"
-            onChange={handleSortChange}
-            checked={sortOrder === "price-asc"}
-            name="metaframeworks"
-            value={"price-asc"}
-            aria-label="Lowest $"
-          />
-          <input
-            className="btn bg-base-300 rounded-full"
-            type="radio"
-            onChange={handleSortChange}
-            checked={sortOrder === "price-desc"}
-            name="metaframeworks"
-            value={"price-desc"}
-            aria-label="Highest $"
-          />
-          <input
-            className="btn bg-base-300 rounded-full"
-            type="radio"
-            onChange={handleSortChange}
-            checked={sortOrder === "default"}
-            name="metaframeworks"
-            value={"default"}
-            aria-label="Free"
-          />
-        </div>
-      </div>
-      <hr className="text-base-300 my-3" />
-     {loading ? (
-        <Loader></Loader>
-      ) : (
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {finalData.map((car) => (
-            <ScaleUp key={car._id}>
-              <CarCard car={car}></CarCard>
-            </ScaleUp>
-          ))}
-        </div>
-      )}
+    {/* Search */}
+    <div className="w-full md:w-auto">
+      <label className="input bg-base-300 rounded-full w-full md:w-60 border-none outline-none">
+        <input
+          onChange={handleSearchChange}
+          type="search"
+          value={search}
+          required
+          placeholder="Search Your Vehicle"
+          className="focus:outline-none placeholder:text-center w-full"
+        />
+      </label>
     </div>
+
+    {/* Filters */}
+    <div className="filter flex flex-wrap justify-center gap-2">
+      <input
+        className="btn bg-base-300 rounded-full"
+        onChange={handleSortChange}
+        checked={sortOrder === "none"}
+        type="radio"
+        name="metaframeworks"
+        value={"none"}
+        aria-label="All"
+      />
+      <input
+        className="btn bg-base-300 rounded-full"
+        type="radio"
+        onChange={handleSortChange}
+        checked={sortOrder === "price-asc"}
+        name="metaframeworks"
+        value={"price-asc"}
+        aria-label="Lowest $"
+      />
+      <input
+        className="btn bg-base-300 rounded-full"
+        type="radio"
+        onChange={handleSortChange}
+        checked={sortOrder === "price-desc"}
+        name="metaframeworks"
+        value={"price-desc"}
+        aria-label="Highest $"
+      />
+      <input
+        className="btn bg-base-300 rounded-full"
+        type="radio"
+        onChange={handleSortChange}
+        checked={sortOrder === "default"}
+        name="metaframeworks"
+        value={"default"}
+        aria-label="Free"
+      />
+    </div>
+
+  </div>
+
+  <hr className="text-base-300 my-3" />
+
+  {/* LIST OR LOADER */}
+  {loading ? (
+    <Loader />
+  ) : (
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      {finalData.map((car) => (
+        <ScaleUp key={car._id}>
+          <CarCard car={car} />
+        </ScaleUp>
+      ))}
+    </div>
+  )}
+</div>
+
   );
 };
 

@@ -2,7 +2,7 @@ import React from "react";
 
 const FeaturedOwner = () => {
   return (
-    <section className="py-16 bg-base-200">
+    <section className="py-16">
       <div className="max-w-6xl mx-auto text-center px-4">
         <h2 className="text-3xl font-bold text-base-content mb-8">🌟 Featured Owner</h2>
         <div className="card bg-accent shadow-xl md:flex-row flex-col items-center md:items-start p-6 md:p-8">
