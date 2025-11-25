@@ -14,7 +14,7 @@ const Navbar = () => {
           to="/"
           className={({ isActive }) =>
             `px-3 py-2 transition-all duration-300 hover:text-accent ${
-              isActive ? "text-accent font-semibold" : "text-secondary-content"
+              isActive ? "text-accent font-semibold" : "text-base-content"
             }`
           }
         >
@@ -26,7 +26,7 @@ const Navbar = () => {
           to="/all-vehicles"
           className={({ isActive }) =>
             `px-3 py-2 transition-all duration-300 hover:text-accent ${
-              isActive ? "text-accent font-semibold" : "text-secondary-content"
+              isActive ? "text-accent font-semibold" : "text-base-content"
             }`
           }
         >
@@ -39,9 +39,7 @@ const Navbar = () => {
             to="/my-vehicles"
             className={({ isActive }) =>
               `px-3 py-2 transition-all duration-300 hover:text-accent ${
-                isActive
-                  ? "text-accent font-semibold"
-                  : "text-secondary-content"
+                isActive ? "text-accent font-semibold" : "text-base-content"
               }`
             }
           >
@@ -55,9 +53,7 @@ const Navbar = () => {
             to="/add-vehicles"
             className={({ isActive }) =>
               `px-3 py-2 transition-all duration-300 hover:text-accent ${
-                isActive
-                  ? "text-accent font-semibold"
-                  : "text-secondary-content"
+                isActive ? "text-accent font-semibold" : "text-base-content"
               }`
             }
           >
@@ -71,9 +67,7 @@ const Navbar = () => {
             to="/my-bookings"
             className={({ isActive }) =>
               `px-3 py-2 transition-all duration-300 hover:text-accent ${
-                isActive
-                  ? "text-accent font-semibold"
-                  : "text-secondary-content"
+                isActive ? "text-accent font-semibold" : "text-base-content"
               }`
             }
           >
@@ -113,7 +107,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content text-base-content rounded-box z-1 mt-3 w-52 p-2 shadow-md"
+              className="menu menu-sm dropdown-content  rounded-box z-1 mt-3 w-52 p-2 shadow-md"
             >
               {links}
             </ul>
@@ -130,7 +124,7 @@ const Navbar = () => {
 
         {/* Center Links */}
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal font-semibold text-base-content text-lg">
+          <ul className="menu menu-horizontal font-semibold  text-lg">
             {links}
           </ul>
         </div>
