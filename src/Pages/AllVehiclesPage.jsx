@@ -90,9 +90,9 @@ const AllVehiclesPage = () => {
     </div>
 
     {/* Filters */}
-    <div className="filter filter-reset flex flex-wrap justify-center gap-2">
+    <div className="filter flex flex-wrap justify-center gap-2">
       <input
-        className="btn bg-base-300 rounded-full"
+        className="btn bg-base-300 rounded-full filter-reset"
         onChange={handleSortChange}
         checked={sortOrder === "none"}
         type="radio"
